@@ -9,6 +9,21 @@ import Category from "./pages/Category";
 
 function App() {
 
+
+    // return (
+    //     <div className="App">
+    //         <header className="App-header">
+    //             <a href="/categories">Link to  another page </a>
+    //             <LabeledInput
+    //                 id="client-id"
+    //                 label="Client Id"
+    //                 placeholder="Client Id Placeholder"
+    //                 defaultValue="Default"
+    //             />
+    //         </header>
+    //     </div>
+    // );
+
     return (
         <div className="App">
             <header className="App-header">
