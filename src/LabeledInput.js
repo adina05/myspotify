@@ -46,14 +46,17 @@ class LabeledInput extends React.Component {
     componentWillUnmount(){
         console.log("LabeledInput - Inside componentWillUnmount");
     }
-
     onChangeHandler = e => {
         console.log(e.target.value);
-        // value = e.target.value
+        const value = e.target.value
+
+        this.props.change(this.props.id, value)
+
         this.setState({
-            value:e.target.value
-            });
+            value: value
+        });
     };
+
 
     render() {
         console.log("LabeledInput - Inside render");
