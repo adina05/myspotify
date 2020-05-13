@@ -1,47 +1,45 @@
+
 import React from 'react';
-import { withRouter } from 'react-router';
+import { Link } from 'react-router-dom';
 
 class Category extends React.Component {
 
     componentDidMount() {
-        fetch("https://api.spotify.com/v1/browse/categories", {
-            method: "POST",
-            headers: new Headers({}),
-        }).then((result) => {
-            console.log(result);
-        });
+        console.log(this.props);
     }
 
     render() {
 
         // let categoryId;
-        // if(this.props.match !==null){
-        //     categoryId=this.props.match.params.id;
-        // }else{
-        //     categoryId="Unknown";
+        // if (this.props.match !== null) {
+        //     categoryId = this.props.match.params.id;
+        // } else {
+        //     categoryId = 'Unknown';
         // }
 
-//         const categoryId = this.props.match !==null ? this.props.match.params.id : "Unknown"
-//
-//
-//         return (
-//             <div>
-//                 {`Category page for ${ this.props.match !==null ? this.props.match.params.id : "Unknown" }`}
-//             </div>)
-//     }
-//
-//
-// export default withRouter(Category);
+        // const categoryId = this.props.match !== null ? this.props.match.params.id : 'Unknown';
+        //
+        // return (
+        //     <div>
+        //         {`Category page for ${ this.props.match !== null ? this.props.match.params.id : 'Unknown' }`}
+        //     </div>
+        // )
 
-        console.log(this.props.match);
         return (
             <div>
-                {`Category page for ${
-                    this.props.match !== null ? this.props.match.params.id : "Unknown"
-                } `}
+                <Link
+                    to={{
+                        pathname: `/playlists/${this.props.id}`,
+                        state: {
+                            categoryName: this.props.name
+                        }
+                    }}
+                >
+                    { this.props.name }
+                </Link>
             </div>
         );
     }
 }
 
-export default withRouter(Category);
+export default Category;

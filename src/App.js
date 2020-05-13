@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from "react-router-dom";
+import { Link, Route, Switch, withRouter } from "react-router-dom";
 import './App.css';
 
 import About from "./pages/About";
@@ -7,8 +7,9 @@ import Categories from "./pages/Categories";
 import Category from "./pages/Category";
 import Header from "./Header";
 import Login from "./pages/Login";
+import Playlists from "./pages/Playlists";
 import SpotifyCallback from "./pages/SpotifyCallback";
-
+import Tracks from './pages/Tracks';
 
 function App() {
 
@@ -50,8 +51,15 @@ function App() {
                      path="/categories/:id"
                      component={Category}/>
                 <Route
+                     path="/playlists/:id"
+                     component={Playlists}/>
+                <Route
                      path="/callback"
                      component={SpotifyCallback}/>
+                <Route
+                     path="/tracks/:id"
+                     component={Tracks}
+                    />
                 </Switch>
             </main>
         </div>
