@@ -1,10 +1,14 @@
 import React from "react";
 import { withRouter } from 'react-router-dom';
-import Category from './Category';
+import Category from '../components/Category';
 import { checkAndReturnToken } from '../utils';
 
 
 class Categories extends React.Component{
+
+    componentWillUnmount() {
+        console.log(`Categories inside componentWillUnmount`)
+    }
 
     state={
         categories:[]

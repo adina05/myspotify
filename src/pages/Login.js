@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-import LabeledInput from '../LabeledInput';
+import LabeledInput from '../components/LabeledInput';
 
 class Login extends React.Component {
 
@@ -38,6 +38,10 @@ class Login extends React.Component {
     //     console.log(result);
     //   });
     // }
+
+    componentWillUnmount() {
+        console.log(`Login inside componentWillUnmount`)
+    }
 
     onClickHandler = () => {
 
