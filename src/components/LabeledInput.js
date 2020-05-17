@@ -3,7 +3,7 @@ import React from "react";
 import {faHeart, faHome} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import "./LabeledInput.css";
+import "../LabeledInput.css";
 
 
 class LabeledInput extends React.Component {

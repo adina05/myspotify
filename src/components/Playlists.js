@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
+import { checkAndReturnToken } from "../utils";
 
 class Playlists extends React.Component {
 
@@ -13,13 +14,17 @@ class Playlists extends React.Component {
             this.props.match.params.id : null;
 
         if (categoryId !== null && categoryId !== undefined) {
-            const token = localStorage.getItem('token');
-            const parsedToken = JSON.parse(token);
+            const token = checkAndReturnToken(this.props.history);
+
+            if (token === null) {
+                return;
+            }
+
 
             fetch(`https://api.spotify.com/v1/browse/categories/${categoryId}/playlists`, {
                 method: 'GET',
                 headers: {
-                    Authorization: `Bearer ${parsedToken.token}`
+                    Authorization: `Bearer ${token}`
                 }
             }).then(result => {
                 console.log(result)
@@ -73,9 +78,7 @@ class Playlists extends React.Component {
                                             alt={`Playlist ${playlist.name} image`}
                                         />
                                         <h3>
-                                            {
-                                                playlist.name
-                                            }
+                                            {playlist.name}
                                         </h3>
                                     </div>
                                 </Link>

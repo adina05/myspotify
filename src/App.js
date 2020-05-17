@@ -4,10 +4,10 @@ import './App.css';
 
 import About from "./pages/About";
 import Categories from "./pages/Categories";
-import Category from "./pages/Category";
-import Header from "./Header";
+import Category from "./components/Category";
+import Header from "./components/Header";
 import Login from "./pages/Login";
-import Playlists from "./pages/Playlists";
+import Playlists from "./components/Playlists";
 import SpotifyCallback from "./pages/SpotifyCallback";
 import Tracks from './pages/Tracks';
 

@@ -5,8 +5,7 @@ import {Button} from "react-bootstrap";
 class SearchBar extends React.Component{
 
     state={
-            searchValue:"",
-            results:[],
+            searchValue:""
         }
     onChangeInputHandler=(e)=>{
         this.setState({searchValue:e.target.searchValue});
@@ -14,6 +13,7 @@ class SearchBar extends React.Component{
     searchHandler=()=>{
 
     }
+
 
     render()
 {
@@ -30,9 +30,11 @@ class SearchBar extends React.Component{
                 />
                 <Button onClick={() => this.searchHandler()}>Search</Button>
             </label>
+            <div>{this.state.searchValue}</div>
         </div>
     )
 }
 }
+
 
 export default SearchBar;
