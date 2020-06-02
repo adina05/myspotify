@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import { checkAndReturnToken } from "../utils";
+import Playlist from '../components/Playlist';
 
 class Playlists extends React.Component {
 
@@ -20,17 +21,15 @@ class Playlists extends React.Component {
                 return;
             }
 
-
-            fetch(`https://api.spotify.com/v1/browse/categories/${categoryId}/playlists`, {
+            const getPlaylist = async () => {
+                const playlists = await fetch(`https://api.spotify.com/v1/browse/categories/${categoryId}/playlists`, {
                 method: 'GET',
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
-            }).then(result => {
-                console.log(result)
-                return result.json();
-            }).then(data => {
-                const playlists = data.playlists.items.map(item => {
+            })
+                const playlistsResp = await playlists.json();
+                const playlistsMap = playlistsResp.playlists.items.map(item => {
                     return {
                         id: item.id,
                         name: item.name,
@@ -38,14 +37,13 @@ class Playlists extends React.Component {
                         image: item.images && item.images.length > 0 ?
                             item.images[0].url : ''
                     };
-                })
+                });
 
                 this.setState({
-                    playlists: playlists
-                })
-            });
+                    playlists: playlistsMap})
+            };
+            getPlaylist();
         }
-
     }
 
     render() {
@@ -60,28 +58,16 @@ class Playlists extends React.Component {
                         categoryName
                     }
                 </h1>
-                <section>
+                <section className="row">
                     {
                         this.state.playlists.map(playlist => {
-                            return (
-                                <Link
-                                    to={{
-                                        pathname: `/tracks/${playlist.id}`,
-                                        state: {
-                                            playlistName: playlist.name
-                                        }
-                                    }}
-                                >
-                                    <div>
-                                        <img
-                                            src={playlist.image}
-                                            alt={`Playlist ${playlist.name} image`}
-                                        />
-                                        <h3>
-                                            {playlist.name}
-                                        </h3>
-                                    </div>
-                                </Link>
+                            return (<Playlist
+                                    id={playlist.id}
+                                    name={playlist.name}
+                                    image={playlist.image}
+                                    desc={playlist.description}
+                                />
+
                             )
                         })
                     }
