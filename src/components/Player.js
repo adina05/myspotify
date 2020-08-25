@@ -12,7 +12,8 @@ const Player = (props) => {
                 height="380"
                 frameBorder="0"
                 allowTransparency="true"
-                allow="encrypted-media"></iframe>
+                allow="encrypted-media">
+            </iframe>
         )
     } else {
         return null;

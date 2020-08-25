@@ -4,6 +4,8 @@ import {Button} from "react-bootstrap";
 
 class SearchBar extends React.Component{
 
+
+
     state={
             searchValue:""
         }
@@ -25,7 +27,7 @@ class SearchBar extends React.Component{
                     name="text"
                     value={this.state.searchValue}
                     id="search-input"
-                    placeholder="Browse Artists"
+                    placeholder="Browse"
                     onChange={(e)=>this.onChangeInputHandler(e)}
                 />
                 <Button onClick={() => this.searchHandler()}>Search</Button>

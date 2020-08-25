@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
-import { checkAndReturnToken } from "../utils";
+import { checkAndReturnToken } from '../utils';
 import Playlist from '../components/Playlist';
 
 class Playlists extends React.Component {
@@ -9,27 +9,31 @@ class Playlists extends React.Component {
         playlists: []
     };
 
-    componentDidMount() {
+    async componentDidMount() {
 
         const categoryId = this.props.match && this.props.match.params ?
             this.props.match.params.id : null;
 
+        console.log(categoryId)
+
         if (categoryId !== null && categoryId !== undefined) {
+
             const token = checkAndReturnToken(this.props.history);
 
             if (token === null) {
                 return;
             }
 
-            const getPlaylist = async () => {
-                const playlists = await fetch(`https://api.spotify.com/v1/browse/categories/${categoryId}/playlists`, {
+            fetch(`https://api.spotify.com/v1/browse/categories/${categoryId}/playlists?country=RO`, {
                 method: 'GET',
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
-            })
-                const playlistsResp = await playlists.json();
-                const playlistsMap = playlistsResp.playlists.items.map(item => {
+            }).then(result => {
+                console.log(result)
+                return result.json();
+            }).then(data => {
+                const playlists = data.playlists.items.map(item => {
                     return {
                         id: item.id,
                         name: item.name,
@@ -37,13 +41,14 @@ class Playlists extends React.Component {
                         image: item.images && item.images.length > 0 ?
                             item.images[0].url : ''
                     };
-                });
+                })
 
                 this.setState({
-                    playlists: playlistsMap})
-            };
-            getPlaylist();
+                    playlists: playlists
+                })
+            });
         }
+
     }
 
     render() {
@@ -61,13 +66,14 @@ class Playlists extends React.Component {
                 <section className="row">
                     {
                         this.state.playlists.map(playlist => {
-                            return (<Playlist
+                            return (
+                                <Playlist
+                                    key={`Playlist${playlist.id}`}
                                     id={playlist.id}
                                     name={playlist.name}
                                     image={playlist.image}
                                     desc={playlist.description}
                                 />
-
                             )
                         })
                     }

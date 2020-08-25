@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 import LabeledInput from '../components/LabeledInput';
@@ -9,35 +8,6 @@ class Login extends React.Component {
         'client-id': '',
         'client-secret': ''
     };
-
-    // componentDidMount() {
-    // fetch('https://jsonplaceholder.typicode.com/posts123')
-    //     .then(result => {
-    //
-    //         if (result.status < 200 || result.status >= 300) {
-    //             return Promise.reject(`Error encountered with status ${result.status}`);
-    //         }
-    //
-    //         return result.json()
-    //     })
-    //     .then(data => {
-    //         console.log(data)
-    //     })
-    //     .catch(error => {
-    //         console.log(error)
-    //     })
-
-    //   fetch("https://accounts.spotify.com/api/token", {
-    //     method: "POST",
-    //     headers: new Headers({
-    //       "Content-Type": "application/x-www-form-urlencoded",
-    //       Authorization: `Basic ${btoa("CLIENT ID : CLIENT SECRET")}`,
-    //     }),
-    //     credentials: "include",
-    //   }).then((result) => {
-    //     console.log(result);
-    //   });
-    // }
 
     componentWillUnmount() {
         console.log(`Login inside componentWillUnmount`)
@@ -70,7 +40,7 @@ class Login extends React.Component {
 
     render() {
         return (
-            <div>
+           <div>
                 <LabeledInput
                     id="client-id"
                     label="Client ID"
@@ -82,7 +52,7 @@ class Login extends React.Component {
                     className="btn btn-primary"
                     onClick={this.onClickHandler}>Login
                 </button>
-            </div>
+           </div>
         )
     }
 }

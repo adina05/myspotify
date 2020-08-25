@@ -1,20 +1,22 @@
 import React, {useState, useEffect} from "react";
-// import { Navbar, Nav, Button, Form, FormControl,Container } from "react-bootstrap";
 import { Navbar, Nav } from "react-bootstrap";
+import { withRouter } from 'react-router-dom';
 import SearchBar from "./SearchBar";
 import { checkAndReturnToken } from "../utils"
 
- const Header=()=>{
+ const Header=(props)=>{
 
      const [user, setUser] = useState("");
 
      useEffect(
          () => {
              setUserName()
-         });
+         }, []);
 
     const setUserName=async()=>{
-        if(checkAndReturnToken() !==null &&checkAndReturnToken() !==undefined) {
+
+        const token = checkAndReturnToken(props.history);
+        if(token !==null && token !==undefined) {
             const result= await fetch("https://api.spotify.com/v1/me",
                 {
                    method:"GET",
@@ -31,15 +33,12 @@ import { checkAndReturnToken } from "../utils"
             if(user!==undefined){
                 return `Logged in as ${user}`
             }else{
-                return <button><Nav.Link href="/login">Login</Nav.Link></button>
+                return <button className="login__btn"><Nav.Link className="loggin__link" href="/login">Login</Nav.Link></button>
             }
         }
 
         return (
                 <Navbar expand="lg" bg="light">
-                    <div>
-                    <SearchBar/>
-                    </div>
                     <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="pages-links">
                         <Nav.Item>
@@ -51,7 +50,7 @@ import { checkAndReturnToken } from "../utils"
                         <Nav.Item>
                             <Nav.Link href="/about">About</Nav.Link>
                         </Nav.Item>
-                        <Nav.Item>
+                        <Nav.Item className="d-flex align-items-center">
                             {expiredSession()}
                         </Nav.Item>
                     </Nav>
@@ -63,4 +62,4 @@ import { checkAndReturnToken } from "../utils"
 
 }
 
-export default Header;
+export default withRouter(Header);

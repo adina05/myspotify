@@ -1,8 +1,11 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+
 import Player from '../components/Player';
 import Track from '../components/Track';
+
 import { checkAndReturnToken } from '../utils';
+
 import './Tracks.css';
 
 class Tracks extends React.Component {
@@ -24,16 +27,20 @@ class Tracks extends React.Component {
             if (token === null) {
                 return;
             }
-            const getTracks = async () => {
-                const tracks = await fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks?limit=20`, {
+
+            fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks?limit=20`, {
                 method: 'GET',
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
-            });
-                const tracksResp = await tracks.json();
-                const tracksMap = tracksResp.items.map(item => {
+            }).then(result => {
+                console.log(result)
+                return result.json();
+            }).then(data => {
+                const tracks = data.items.map(item => {
+
                     const track = item.track ? item.track : {};
+
                     return {
                         id: track.id,
                         name: track.name,
@@ -47,10 +54,9 @@ class Tracks extends React.Component {
                 });
 
                 this.setState({
-                    tracks: tracksMap
+                    tracks: tracks
                 });
-            };
-            getTracks();
+            });
         }
 
     }
@@ -76,12 +82,13 @@ class Tracks extends React.Component {
                 <section className="content__wrapper">
                     <section className="section__tracks">
                         <ul className="tracks__wrapper">
-                            { this.state.tracks.map(track => {
+                            { this.state.tracks.map((track, index) => {
 
                                 const isTrackPicked = track.id === this.state.currentTrackId;
 
                                 return (
                                     <Track
+                                        key={`Track${track.id}${index}`}
                                         pickTrack={this.onTrackClickedHandler}
                                         id={track.id}
                                         name={track.name}
