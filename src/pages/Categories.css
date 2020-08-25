@@ -1,0 +1,14 @@
+.categories__wrapper{
+    transition-property: transform;
+    transition-duration: 1s;
+    padding-left: 10px;
+    list-style: none;
+    /*height: 100%;*/
+    /*overflow-y: auto;*/
+    display: flex;
+    flex-wrap: wrap;
+}
+div.categories__wrapper a{
+    margin: 5px;
+    font-size: 25px;
+}

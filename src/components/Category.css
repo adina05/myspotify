@@ -1,0 +1,38 @@
+
+.category__wrapper {
+    transition-property: transform;
+    transition-duration: 1s;
+}
+.category__image {
+    width: 200px;
+    height: 200px;
+
+    border-radius: 12px;
+}
+.category__title{
+    font-size: 20px;
+    line-height: 24px;
+    font-family: 'Roboto Condensed';
+    font-weight: bold;
+
+    margin: 15px 0 8px;
+}
+.category__description{
+    font-size: 12px;
+    line-height: 14px;
+}
+.category__title,
+.category__description {
+    color: #727272;
+}
+
+.category__wrapper:hover {
+    transform: scale(1.1);
+}
+.category__wrapper:hover a {
+    text-decoration: none;
+}
+
+.playlist__wrapper:hover a {
+    text-decoration: none;
+}
