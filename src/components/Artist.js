@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-//import "./Artist.css";
+import "./Artist.css";
 
 class Artist extends React.Component {
 

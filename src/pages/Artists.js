@@ -32,7 +32,7 @@ class Artists extends React.Component{
                 isLoading: true
             });
 
-            const result = await fetch('https://api.spotify.com/v1/artists?ids=0oSGxfWSnnOXhD2fKuz2Gy,3dBVyJ7JuOMt4GE9607Qin', {
+            const result = await fetch('https://api.spotify.com/v1/artists?ids=0oSGxfWSnnOXhD2fKuz2Gy,3dBVyJ7JuOMt4GE9607Qin,0OdUWJ0sBjDrqHygGUXeCF,1vCWHaC5f2uS3yhpwWbIA6,43ZHCT0cAZBISjO8DG9PnE', {
                 method: 'GET',
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -95,7 +95,7 @@ class Artists extends React.Component{
         }
 
         return (
-            <div className="categories__wrapper">
+            <div className="artists__wrapper">
                 <Switch>
                     <Route
                         path={`${this.props.match.path}/:id`}

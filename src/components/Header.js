@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { withRouter } from 'react-router-dom';
-import SearchBar from "./SearchBar";
 import { checkAndReturnToken } from "../utils"
 
  const Header=(props)=>{
@@ -41,6 +40,9 @@ import { checkAndReturnToken } from "../utils"
                 <Navbar expand="lg" bg="light">
                     <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="pages-links">
+                        <Nav.Item>
+                            <Nav.Link href="/home">Home</Nav.Link>
+                        </Nav.Item>
                         <Nav.Item>
                             <Nav.Link href="/categories">Categories</Nav.Link>
                         </Nav.Item>

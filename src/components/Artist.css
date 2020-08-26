@@ -1,0 +1,37 @@
+.artist__wrapper {
+    transition-property: transform;
+    transition-duration: 1s;
+}
+.artist__image {
+    width: 200px;
+    height: 200px;
+
+    border-radius: 12px;
+}
+.artist__title{
+    font-size: 20px;
+    line-height: 24px;
+    font-family: 'Roboto Condensed';
+    font-weight: bold;
+
+    margin: 15px 0 8px;
+}
+.artist__description{
+    font-size: 12px;
+    line-height: 14px;
+}
+.artist__title,
+.artist__description {
+    color: #727272;
+}
+
+.artist__wrapper:hover {
+    transform: scale(1.1);
+}
+.artist__wrapper:hover a {
+    text-decoration: none;
+}
+
+.playlist__wrapper:hover a {
+    text-decoration: none;
+}

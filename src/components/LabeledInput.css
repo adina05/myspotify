@@ -1,4 +1,15 @@
+.labeled__wrapper{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-left: 10px;
 
+    width: 500px;
+    height: 250px;
+    border-style: double;
+    border-color:#21D4FD;
+}
 .labeled__input{
     display:flex;
     flex-direction: column;

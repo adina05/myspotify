@@ -7,6 +7,7 @@ import Artists from "./pages/Artists";
 import Categories from "./pages/Categories";
 import Category from "./components/Category";
 import Header from "./components/Header";
+import Home from "./pages/Home";
 import ErrorBoundary from './pages/ErrorBoundary';
 import Login from './pages/Login';
 import Playlists from "./pages/Playlists";
@@ -39,6 +40,9 @@ function App() {
                          <Route
                          path="/categories"
                          component={Category}/>
+                    <Route
+                        path="/Home"
+                        component={Home}/>
                     <Route
                          path="/login"
                          component={Login}/>

@@ -40,7 +40,7 @@ class Login extends React.Component {
 
     render() {
         return (
-           <div>
+           <div className="labeled__wrapper">
                 <LabeledInput
                     id="client-id"
                     label="Client ID"
