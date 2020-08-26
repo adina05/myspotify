@@ -20,7 +20,7 @@ class SpotifyCallback extends React.Component{
             localStorage.setItem("token", JSON.stringify(token));
         }
         if(this.props.history){
-            this.props.history.push("/");
+            this.props.history.push("/home");
         }
 
     }

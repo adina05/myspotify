@@ -1,17 +1,3 @@
-.home__wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.home__title {
-    color: #727272;
-    font-size: 40px;
-    margin: 20px auto;
-    padding: 0;
-}
 
 .form-inline {
     display: flex;

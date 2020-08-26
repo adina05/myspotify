@@ -2,7 +2,6 @@ import React from 'react';
 import { Link, Route, Switch, withRouter } from "react-router-dom";
 import './App.css';
 
-import About from "./pages/About";
 import Artists from "./pages/Artists";
 import Categories from "./pages/Categories";
 import Category from "./components/Category";
@@ -26,9 +25,6 @@ function App() {
             <main>
                 <Switch>
 
-                    <Route
-                        path="/about"
-                        component={About}/>
                     <Route
                         path="/artists*"
                         exact

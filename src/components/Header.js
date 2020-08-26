@@ -49,9 +49,6 @@ import { checkAndReturnToken } from "../utils"
                         <Nav.Item>
                             <Nav.Link href="/artists">Artists</Nav.Link>
                         </Nav.Item>
-                        <Nav.Item>
-                            <Nav.Link href="/about">About</Nav.Link>
-                        </Nav.Item>
                         <Nav.Item className="d-flex align-items-center">
                             {expiredSession()}
                         </Nav.Item>
